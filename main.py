@@ -1,6 +1,8 @@
 import streamlit as st
 from googleapiclient.discovery import build
 
+api_key = st.secrets["api_key"]
+
 def query_knowledge_graph(query):
     service = build("kgsearch", "v1", developerKey=api_key)
     response = service.entities().search(query=query, limit=5).execute()
